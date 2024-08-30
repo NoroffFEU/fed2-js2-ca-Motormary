@@ -1,3 +1,4 @@
+import handleApiErrors from "../../utilities/handle-api-errors"
 import { API_AUTH_LOGIN } from "../constants"
 
 export async function login({ email, password }) {
@@ -15,12 +16,9 @@ export async function login({ email, password }) {
 
   const responseData = await response.json()
   if (response.ok) {
-    localStorage.token = responseData.accessToken
+    localStorage.token = responseData.data.accessToken
     window.location.href = "/"
   } else {
-    alert(
-      responseData.errors.map((error) => error.message).join("\r\n") +
-        `\r\nstatus code: ${responseData.statusCode}`
-    )
+    handleApiErrors(responseData)
   }
 }

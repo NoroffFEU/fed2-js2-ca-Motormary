@@ -1,3 +1,4 @@
+import handleApiErrors from "../../utilities/handle-api-errors"
 import { API_AUTH_REGISTER } from "../constants"
 
 export async function register({ name, email, password, bio, banner, avatar }) {
@@ -22,9 +23,6 @@ export async function register({ name, email, password, bio, banner, avatar }) {
     alert("Account created successfully")
   } else {
     const data = await response.json()
-    alert(
-      data.errors.map((error) => error.message).join("\r\n") +
-        `\r\nstatus code: ${data.statusCode}`
-    )
+    handleApiErrors(data)
   }
 }
