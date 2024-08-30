@@ -1,5 +1,5 @@
 import handleApiErrors from "../../utilities/handle-api-errors"
-import { API_AUTH_REGISTER } from "../constants"
+import { API_AUTH_REGISTER, API_OPTIONS } from "../constants"
 
 export async function register({ name, email, password, bio, banner, avatar }) {
   const data = {
@@ -12,10 +12,7 @@ export async function register({ name, email, password, bio, banner, avatar }) {
   }
 
   const response = await fetch(API_AUTH_REGISTER, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    ...API_OPTIONS("POST"),
     body: JSON.stringify(data),
   })
 
