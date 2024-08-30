@@ -1,6 +1,9 @@
 import handleApiErrors from "../../utilities/handle-api-errors"
-import { API_OPTIONS, API_SOCIAL_POSTS, API_SOCIAL_PROFILES } from "../constants"
-
+import {
+  API_OPTIONS,
+  API_SOCIAL_POSTS,
+  API_SOCIAL_PROFILES,
+} from "../constants"
 
 export async function readPost(id) {
   const response = await fetch(`${API_SOCIAL_POSTS}/${id}`, API_OPTIONS())
@@ -9,7 +12,6 @@ export async function readPost(id) {
 
   if (response.ok) {
     console.log(responseData)
-    // redirect
   } else {
     handleApiErrors(responseData)
   }
@@ -26,7 +28,6 @@ export async function readPosts(limit = 12, page = 1, tag) {
 
   if (response.ok) {
     console.log(responseData)
-    // redirect
   } else {
     handleApiErrors(responseData)
   }
@@ -43,7 +44,6 @@ export async function readPostsByUser(username, limit = 12, page = 1, tag) {
 
   if (response.ok) {
     console.log(responseData)
-    // redirect
   } else {
     handleApiErrors(responseData)
   }
