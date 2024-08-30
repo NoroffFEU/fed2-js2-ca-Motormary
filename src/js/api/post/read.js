@@ -4,6 +4,23 @@ import {
   API_SOCIAL_POSTS,
   API_SOCIAL_PROFILES,
 } from "../constants"
+import cacheDataWithExpiry from "./cache"
+
+function getLocalPosts() {
+  if (localStorage.posts) {
+    const time = new Date()
+    const localPosts = JSON.parse(localStorage.posts)
+
+    if (time.getTime() > localPosts.expiry) {
+      console.log("local data has expired! Fetching from server")
+      localStorage.removeItem("posts")
+      return false
+    } else {
+      console.log("returning local posts")
+      return localPosts
+    }
+  } else return false
+}
 
 export async function readPost(id) {
   const response = await fetch(`${API_SOCIAL_POSTS}/${id}`, API_OPTIONS())
@@ -18,6 +35,11 @@ export async function readPost(id) {
 }
 
 export async function readPosts(limit = 12, page = 1, tag) {
+  const localPosts = getLocalPosts()
+
+  console.log(localPosts)
+  if (localPosts) return localPosts
+
   const tagParam = tag ? `&_tag=${tag}` : ""
   const response = await fetch(
     `${API_SOCIAL_POSTS}?page=${page}&limit=${limit}${tagParam}`,
@@ -27,7 +49,8 @@ export async function readPosts(limit = 12, page = 1, tag) {
   const responseData = await response.json()
 
   if (response.ok) {
-    console.log(responseData)
+    cacheDataWithExpiry(responseData, "posts")
+    return responseData
   } else {
     handleApiErrors(responseData)
   }
