@@ -8,9 +8,12 @@ export async function onRegister(event) {
 
   const formData = formatFormData(event)
 
-  console.log(formData)
-
-  btn.setAttribute("disabled", true)
-  await register(formObject)
-  btn.removeAttribute("disabled")
+  try {
+    btn.setAttribute("disabled", true)
+    await register(formData)
+  } catch (e) {
+    console.error(e)
+  } finally {
+    btn.removeAttribute("disabled")
+  }
 }

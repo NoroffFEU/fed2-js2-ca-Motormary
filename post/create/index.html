@@ -1,25 +1,29 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/app.js"></script>
-  </head>
-  <body>
-    <a href="/">
-      <img src="/public/images/noroff-logo.png" alt="Noroff Logo" />
-    </a>
-    <a href="/">Home</a>
-<a href="/profile/">My Profile</a>
-    <a href="/post/create/">Create Post</a>
-    <a href="/auth/login/">Login</a>
-    <a href="/auth/register/">Register</a>
-    <button id="logout">Logout</button>
-    <h1>Create Post</h1>
-    <form name="createPost">
-      <textarea minlength="2" style="min-height: 5rem;"></textarea>
-      <button>Create Post</button>
-    </form>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noroff FED2 JS2 CA</title>
+  <script type="module" src="/src/app.js"></script>
+</head>
+
+<body>
+  <a href="/">
+    <img src="/images/noroff-logo.png" alt="Noroff Logo" />
+  </a>
+  <a href="/">Home</a>
+  <a href="/profile/">My Profile</a>
+  <a href="/post/create/">Create Post</a>
+  <a href="/auth/login/">Login</a>
+  <a href="/auth/register/">Register</a>
+  <button id="logout">Logout</button>
+  <h1>Create Post</h1>
+  <form name="createPost" style="display: flex; flex-direction: column; max-width: fit-content;">
+    <input name="title" min="2">
+    <textarea name="content" minlength="2" style="min-height: 5rem;"></textarea>
+    <button>Create Post</button>
+  </form>
+</body>
+
 </html>
