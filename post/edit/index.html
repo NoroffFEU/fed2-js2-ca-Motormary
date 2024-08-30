@@ -1,21 +1,30 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Noroff FED2 JS2 CA</title>
-    <script type="module" src="/src/app.js"></script>
-  </head>
+<head>
+  <meta charset="UTF-8" />
 
-  <body>
-    <a href="/">
-      <img src="/public/images/noroff-logo.png" alt="Noroff Logo" />
-    </a>
-    <h1>Edit Post</h1>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noroff FED2 JS2 CA</title>
+  <script type="module" src="/src/app.js"></script>
+</head>
 
-    <form name="editPost">
-      <button>Edit Post</button>
-    </form>
-  </body>
+<body>
+  <a href="/">
+    <img src="/public/images/noroff-logo.png" alt="Noroff Logo" />
+  </a>
+  <a href="/">Home</a>
+  <a href="/profile/">My Profile</a>
+  <a href="/post/create/">Create Post</a>
+  <a href="/auth/login/">Login</a>
+  <a href="/auth/register/">Register</a>
+  <button>Logout</button>
+  <h1>Edit Post</h1>
+
+  <form name="editPost">
+    <textarea minlength="2" style="min-height: 5rem;"></textarea>
+    <button>Edit Post</button>
+  </form>
+</body>
+
 </html>
