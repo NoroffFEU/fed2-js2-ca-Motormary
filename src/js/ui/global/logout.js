@@ -1,4 +1,6 @@
-export function setLogoutListener() {
-}
+import { onLogout } from "../auth/logout"
 
-setLogoutListener()
+export function setLogoutListener() {
+    const logoutBtn = document.querySelector("#logout")
+    logoutBtn.addEventListener("click", onLogout)
+}
