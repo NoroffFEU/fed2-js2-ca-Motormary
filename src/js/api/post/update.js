@@ -14,6 +14,7 @@ export async function updatePost(id, { title, body, tags, media }) {
   const responseData = await response.json()
 
   if (response.ok) {
+    localStorage.removeItem("posts")
     alert("Post updated successfully")
   } else {
     handleApiErrors(responseData)

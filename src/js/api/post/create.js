@@ -17,6 +17,7 @@ export async function createPost({ title, body, tags, media }) {
   const responseData = await response.json()
 
   if (response.ok) {
+    localStorage.removeItem("posts")
     alert("Post created successfully")
   } else {
     handleApiErrors(responseData)
