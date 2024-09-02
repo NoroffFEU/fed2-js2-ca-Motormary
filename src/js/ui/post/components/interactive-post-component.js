@@ -45,7 +45,7 @@ export default class InteractivePost extends Posts {
   checkReactions() {
     const currentUser = localStorage.username
     this.reactions.filter(reaction => {
-      if (reaction.reactors.some(user => user === currentUser)) {
+      if (reaction.reactors.some(user => user.toLowerCase() === currentUser.toLowerCase())) {
         switch (reaction.symbol) {
           case "😂": {
             this.lol.classList.add("reacted")
