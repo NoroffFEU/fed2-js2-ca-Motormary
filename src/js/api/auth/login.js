@@ -13,7 +13,9 @@ export async function login({ email, password }) {
 
   const responseData = await response.json()
   if (response.ok) {
+    console.log(responseData)
     localStorage.token = responseData.data.accessToken
+    localStorage.username = responseData.data.name
     window.location.href = "/"
   } else {
     handleApiErrors(responseData)

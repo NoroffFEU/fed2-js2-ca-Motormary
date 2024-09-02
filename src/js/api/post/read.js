@@ -23,12 +23,12 @@ function getLocalPosts() {
 }
 
 export async function readPost(id) {
-  const response = await fetch(`${API_SOCIAL_POSTS}/${id}`, API_OPTIONS())
+  const response = await fetch(`${API_SOCIAL_POSTS}/${id}/?_author=true&_comments=true&_reactions=true`, API_OPTIONS())
 
   const responseData = await response.json()
 
   if (response.ok) {
-    console.log(responseData)
+    return responseData
   } else {
     handleApiErrors(responseData)
   }
@@ -42,7 +42,7 @@ export async function readPosts(limit = 12, page = 1, tag) {
 
   const tagParam = tag ? `&_tag=${tag}` : ""
   const response = await fetch(
-    `${API_SOCIAL_POSTS}?page=${page}&limit=${limit}${tagParam}`,
+    `${API_SOCIAL_POSTS}?page=${page}&limit=${limit}${tagParam}&_count`,
     API_OPTIONS()
   )
 

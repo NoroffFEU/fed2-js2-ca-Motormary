@@ -8,8 +8,9 @@ export async function deletePost(id) {
   )
 
   if (response.ok) {
-    window.location.href = "/"
     localStorage.removeItem("posts")
+    if (window.location.pathname === "/") return
+    else window.location.href = "/"
   } else {
     const responseData = await response.json()
     handleApiErrors(responseData)
