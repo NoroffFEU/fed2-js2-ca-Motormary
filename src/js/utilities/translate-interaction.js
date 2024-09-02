@@ -6,8 +6,5 @@ export default function translateInteraction(interaction) {
         case "lol": {
             return "😂"
         }
-        default: {
-            return "💗"
-        }
     }
 }
