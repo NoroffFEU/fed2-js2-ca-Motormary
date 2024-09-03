@@ -3,7 +3,7 @@ import { styleData, interactivePostTemp, postTemplate } from "./component-style"
 export default class Posts extends HTMLElement {
   constructor(post, interactive = false) {
     super()
-    const {id, title, body} = post
+    const {id, title, body, media} = post
     const styleEl = document.createElement("style")
     styleEl.innerHTML = styleData
 
@@ -17,6 +17,7 @@ export default class Posts extends HTMLElement {
     this.dataset.id = id
     this.shadowRoot.querySelector(".post-card").href = `/post/?id=${id}`
     this.shadowRoot.querySelector(".title").textContent = title ?? "Title"
+    this.shadowRoot.querySelector("img").src = media?.url ?? "/images/noroff-logo.png"
     this.shadowRoot.querySelector(".body").textContent = body ?? "Body"
     this.shadowRoot.querySelector(".comments-count").textContent = `Comments: ${post._count.comments}`
     this.shadowRoot.querySelector(".reactions-count").textContent = `Reactions: ${post._count.reactions}`

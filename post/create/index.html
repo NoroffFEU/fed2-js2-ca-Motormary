@@ -19,10 +19,14 @@
   <a href="/auth/register/">Register</a>
   <button id="logout">Logout</button>
   <h1>Create Post</h1>
-  <form name="createPost" style="display: flex; flex-direction: column; max-width: fit-content;">
-    <input name="title" min="2">
-    <textarea name="body" minlength="2" style="min-height: 5rem;"></textarea>
-    <button id="create">Create Post</button>
+  <form name="createPost" style="display: flex; max-width: fit-content; gap: 2rem;">
+    <div style="display: flex; flex-direction: column;">
+      <input name="title" required placeholder="Title">
+      <textarea name="body" minlength="2" style="min-height: 5rem;" placeholder="Content"></textarea>
+      <input type="url" name="media" placeholder="Media URL">
+      <button id="create">Create Post</button>
+    </div>
+    <img id="mediaPreview" style="max-width: 300px;" src="https://" alt="Media preview">
   </form>
 </body>
 

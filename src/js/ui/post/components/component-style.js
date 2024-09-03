@@ -7,10 +7,13 @@ export const commentStyle = `
   flex-direction: column;
   margin-bottom: 1rem;
   padding-left: 0.5rem;
-  padding-right: 0.5rem;
   font-size: 0.75rem;
   border-radius: 6px;
   box-shadow: -1px 5px 3px #6363;
+}
+
+.comment_body {
+  padding-right: 0.5rem;
 }
 
 .comment_author {
@@ -54,6 +57,7 @@ export const styleData = `
 .post-card {
     display: flex;
     flex-direction: column;
+    max-width: 700px;
     gap: 0.5rem;
     padding: 1.5rem;
     color: inherit;
@@ -69,10 +73,6 @@ export const styleData = `
   cursor: pointer;
 }
 
-.post-card img {
-  width: 500px;
-}
-
 .title {
     font-weight: bold;
     font-size: 1.5rem;
@@ -81,10 +81,6 @@ export const styleData = `
 
 .author {
   font-size: 0.75rem;
-}
-
-.body {
-  max-width: 700px;
 }
 
 .interactions {
