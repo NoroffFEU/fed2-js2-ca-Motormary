@@ -18,8 +18,8 @@ export default class InteractivePost extends Posts {
     this.follow = this.shadowRoot.querySelector(".follow-button")
     this.like = this.shadowRoot.querySelector(".like-button")
     this.lol = this.shadowRoot.querySelector(".lol-button")
-    this.toggle = this.shadowRoot.querySelector(".toggle-button")
-    this.remove = this.shadowRoot.querySelector(".delete-btn")
+    this.toggleButton = this.shadowRoot.querySelector(".toggle-button")
+    this.removeButton = this.shadowRoot.querySelector(".delete-btn")
     this.comment = this.shadowRoot.querySelector(".comment_send")
     this.commentsContainer = this.shadowRoot.querySelector(".comment_all")
     this.comments = comments
@@ -28,8 +28,8 @@ export default class InteractivePost extends Posts {
     this.follow.addEventListener("click", () => console.log("followed"))
     this.like.addEventListener("click", () => this.handleInteraction("like"))
     this.lol.addEventListener("click", () => this.handleInteraction("lol"))
-    this.toggle.addEventListener("click", () => toggleCommentField(this))
-    this.remove.addEventListener("click", () => this.handleDeletePost())
+    this.toggleButton.addEventListener("click", () => toggleCommentField(this))
+    this.removeButton.addEventListener("click", () => this.handleDeletePost())
     this.shadowRoot
       .querySelector("form")
       .addEventListener("submit", (event) => {
@@ -48,11 +48,11 @@ export default class InteractivePost extends Posts {
       if (reaction.reactors.some(user => user.toLowerCase() === currentUser.toLowerCase())) {
         switch (reaction.symbol) {
           case "😂": {
-            this.lol.classList.add("reacted")
+            this.lol.classList.remove("inactive")
             break
           }
           case "💗": {
-            this.like.classList.add("reacted")
+            this.like.classList.remove("inactive")
           }
         }
       }
@@ -97,18 +97,18 @@ export default class InteractivePost extends Posts {
   }
 
   async handleInteraction(interaction) {
-    const isInteracted = this[interaction].classList.contains("reacted")
+    const isInteracted = this[interaction].classList.contains("inactive")
 
     if (isInteracted) {
-      this[interaction].classList.remove("reacted")
+      this[interaction].classList.remove("inactive")
     } else {
-      this[interaction].classList.add("reacted")
+      this[interaction].classList.add("inactive")
     }
 
     try {
       this[interaction].classList.add("disabled", true)
       const symbol = translateInteraction(interaction)
-      const response = await interactWithPost(this.dataset.id, symbol)
+      await interactWithPost(this.dataset.id, symbol)
     } catch (e) {
       console.error(e)
     } finally {
@@ -116,5 +116,8 @@ export default class InteractivePost extends Posts {
     }
   }
 }
-
-customElements.define("single-post", InteractivePost)
+if (customElements.get("interactive-post")) {
+  console.error("Element has already been registered!")
+} else {
+  customElements.define("interactive-post", InteractivePost)
+}

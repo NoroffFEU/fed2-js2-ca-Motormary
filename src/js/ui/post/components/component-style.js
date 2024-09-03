@@ -60,6 +60,15 @@ export const styleData = `
     text-decoration: none;
 }
 
+.post-card button:not(.comment_send) {
+  background-color: transparent;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  border: none;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
 .post-card img {
   width: 500px;
 }
@@ -92,8 +101,8 @@ export const styleData = `
   display: none;
 }
 
-.reacted {
-  background-color: green;
+.inactive {
+  color: #63636350;
 }
 
 .interaction-count {
@@ -124,8 +133,8 @@ interactivePostTemp.innerHTML = `
       <p class="reactions-count"></p>
     </div>
     <div class="interactions">
-        <button class="like-button" title="Like">💗</button>
-        <button class="lol-button" title="LOL">😂</button>
+        <button class="like-button inactive" title="Like">💗</button>
+        <button class="lol-button inactive" title="LOL">😂</button>
         <button class="toggle-button" title="Comment">💬</button>
         <button class="delete-btn" title="Delete">❌</button>
     </div>

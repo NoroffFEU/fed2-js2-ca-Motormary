@@ -37,7 +37,6 @@ export async function readPost(id) {
 export async function readPosts(limit = 12, page = 1, tag) {
   const localPosts = getLocalPosts()
 
-  console.log(localPosts)
   if (localPosts) return localPosts
 
   const tagParam = tag ? `&_tag=${tag}` : ""
