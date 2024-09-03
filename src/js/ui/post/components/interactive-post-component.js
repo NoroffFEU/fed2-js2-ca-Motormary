@@ -9,10 +9,12 @@ import toggleCommentField from "../../../utilities/toggle-comment-field"
 export default class InteractivePost extends Posts {
   constructor(post) {
     super(post, true)
-    const { comments, reactions } = post
+    const { comments, reactions, id, author } = post
 
     // Values
     this.reactions = reactions
+    this.shadowRoot.querySelector(".edit-button").href = `/post/edit/?id=${id}`
+    this.shadowRoot.querySelector(".author").textContent = `By: ${author.name}`
 
     // Elements
     this.follow = this.shadowRoot.querySelector(".follow-button")

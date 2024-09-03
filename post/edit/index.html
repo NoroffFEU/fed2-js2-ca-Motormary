@@ -21,9 +21,10 @@
   <button id="logout">Logout</button>
   <h1>Edit Post</h1>
 
-  <form name="editPost">
-    <textarea minlength="2" style="min-height: 5rem;"></textarea>
-    <button>Edit Post</button>
+  <form style="display: flex; flex-direction: column; width: fit-content;" name="editPost">
+    <input name="title" min="2">
+    <textarea name="body" minlength="2" style="min-height: 5rem;"></textarea>
+    <button id="edit">Edit Post</button>
   </form>
 </body>
 

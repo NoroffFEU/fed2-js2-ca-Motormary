@@ -79,6 +79,14 @@ export const styleData = `
     margin: 0;
 }
 
+.author {
+  font-size: 0.75rem;
+}
+
+.body {
+  max-width: 700px;
+}
+
 .interactions {
     display: flex;
     flex-wrap: none;
@@ -124,8 +132,9 @@ postTemplate.innerHTML = `
 `
 interactivePostTemp.innerHTML = `
   <div class="post-card">
-    <button class="follow-button" title="Follow">⭐</button>
-    <p class="title"></p>
+  <p class="title"></p>
+  <p class="author"></p>
+  <button class="follow-button" title="Follow">⭐</button>
     <img src="/images/noroff-logo.png" alt="img">
     <p class="body"></p>
     <div class="interaction-count">
@@ -137,6 +146,7 @@ interactivePostTemp.innerHTML = `
         <button class="lol-button inactive" title="LOL">😂</button>
         <button class="toggle-button" title="Comment">💬</button>
         <button class="delete-btn" title="Delete">❌</button>
+        <button title="Edit"><a class="edit-button" style="text-decoration: none;" href="">🔨</a></button>
     </div>
     <form name="comment" class="comment_container hidden">
       <textarea name="body" class="comment_field"></textarea>
