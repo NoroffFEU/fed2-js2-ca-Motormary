@@ -81,11 +81,9 @@ export default class InteractivePost extends Posts {
 
   async handleDeletePost() {
     try {
-      this.classList.add("hidden")
       await deletePost(this.dataset.id)
     } catch (e) {
       console.error(e)
-      this.classList.remove("hidden")
     }
   }
 

@@ -8,8 +8,6 @@ export async function deleteComment(postId, commentId) {
     API_OPTIONS("DELETE")
   )
 
-  console.log(response)
-
   if (response.ok) {
     localStorage.removeItem("posts")
 } else {
