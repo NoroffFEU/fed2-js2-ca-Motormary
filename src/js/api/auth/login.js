@@ -22,6 +22,7 @@ export async function login({ email, password }) {
 
   const responseData = await response.json()
   if (response.ok) {
+    // Store token and username
     localStorage.token = responseData.data.accessToken
     localStorage.username = responseData.data.name
     window.location.href = "/"
