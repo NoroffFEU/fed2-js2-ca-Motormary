@@ -6,7 +6,32 @@ import Posts from "./post-component"
 import Comment from "./comment"
 import toggleCommentField from "../../../utilities/toggle-comment-field"
 
+/**
+ * Represents an interactive post web component, extending the `Posts` class
+ * to add interactivity such as commenting, reacting, and deleting posts.
+ *
+ * @class
+ * @extends Posts
+ */
 export default class InteractivePost extends Posts {
+  /**
+   * Creates an instance of the InteractivePost component.
+   *
+   * @constructor
+   * @param {Object} post - The post data to be displayed in the component.
+   * @param {number} post.id - The unique identifier for the post.
+   * @param {string} post.title - The title of the post.
+   * @param {string} post.body - The body content of the post.
+   * @param {Object} post.media - Media object associated with the post.
+   * @param {string} post.media.url - URL of the media associated with the post.
+   * @param {Object} post._count - Object containing counts related to the post.
+   * @param {number} post._count.comments - Number of comments on the post.
+   * @param {number} post._count.reactions - Number of reactions to the post.
+   * @param {Array<Object>} post.comments - An array of comment objects related to the post.
+   * @param {Array<Object>} post.reactions - An array of reaction objects.
+   * @param {Object} post.author - The author of the post.
+   * @param {string} post.author.name - The name of the post author.
+   */
   constructor(post) {
     super(post, true)
     const { comments, reactions, id, author } = post
@@ -46,8 +71,12 @@ export default class InteractivePost extends Posts {
 
   checkReactions() {
     const currentUser = localStorage.username
-    this.reactions.filter(reaction => {
-      if (reaction.reactors.some(user => user.toLowerCase() === currentUser.toLowerCase())) {
+    this.reactions.filter((reaction) => {
+      if (
+        reaction.reactors.some(
+          (user) => user.toLowerCase() === currentUser.toLowerCase()
+        )
+      ) {
         switch (reaction.symbol) {
           case "😂": {
             this.lol.classList.remove("inactive")
