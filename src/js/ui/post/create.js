@@ -1,6 +1,14 @@
 import { createPost } from "../../api/post/create"
 import formatFormData from "../../utilities/format-form-data"
 
+/**
+ * @description Handles the form data when creating a new post.
+ * 
+ * @param {FormDataEvent} event 
+ * 
+ * @async
+ * @returns {Promise<void>} Returns empty promise.
+ */
 export async function onCreatePost(event) {
     event.preventDefault()
     const button = document.querySelector("#create")

@@ -6,14 +6,14 @@ import { API_AUTH_REGISTER, API_OPTIONS } from "../constants"
  *
  * @async
  * @function register
- * @param {Object} user - An object containing user registration details.
- * @param {string} user.name - The name of the user.
- * @param {string} user.email - The email address of the user.
- * @param {string} user.password - The password for the user account.
- * @param {string} [user.bio] - A brief bio for the user's profile (optional).
- * @param {string} [user.banner] - URL or data for the user's profile banner image (optional).
- * @param {string} [user.avatar] - URL or data for the user's avatar image (optional).
- * @returns {Promise<void>} A promise that resolves when the registration process is complete.
+ * @param {Object} user - User object.
+ * @param {string} user.name - Users name.
+ * @param {string} user.email - User email.
+ * @param {string} user.password - Account password.
+ * @param {string} [user.bio] - User bio (optional).
+ * @param {string} [user.banner] - URL containing user banner image (optional).
+ * @param {string} [user.avatar] - URL containing user avatar image (optional).
+ * @returns {Promise<void>} An empty promise.
  * @throws {Error} Will throw an error if the registration fails.
  *
  * @example
