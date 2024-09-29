@@ -1,1 +1,2 @@
-export async function getKey(name) {}
+export async function getKey(name) {
+}
