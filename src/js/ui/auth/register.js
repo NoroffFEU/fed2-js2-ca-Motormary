@@ -1,6 +1,13 @@
 import { register } from "../../api/auth/register"
 import formatFormData from "../../utilities/format-form-data"
 
+/**
+ * @description Handles registration submit event
+ * 
+ * @param {FormDataEvent} event
+ * @async
+ * @returns {Promise<void>}
+ */
 export async function onRegister(event) {
   event.preventDefault()
 

@@ -1,6 +1,17 @@
 import handleApiErrors from "../../utilities/handle-api-errors"
-import { API_KEY, API_OPTIONS, API_SOCIAL_POSTS } from "../constants"
+import { API_OPTIONS, API_SOCIAL_POSTS } from "../constants"
 
+/**
+ * @description Handles creating a post.
+ * 
+ * @param {Object} post - Post object.
+ * @param {string} post.title - Title of the post.
+ * @param {string} post.body - Body of the post.
+ * @param {Array.<string>} [post.tags] - Tags describing the post.
+ * 
+ * @async
+ * @returns {Promise<void>} Returns empty promise.
+ */
 export async function createPost({ title, body, tags, media }) {
   const data = {
     title: title,
