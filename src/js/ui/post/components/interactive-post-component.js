@@ -69,6 +69,10 @@ export default class InteractivePost extends Posts {
     this.checkReactions()
   }
 
+  /**
+   * Checks the current user's reactions and updates the UI accordingly.
+   * @private
+   */
   checkReactions() {
     const currentUser = localStorage.username
     this.reactions.filter((reaction) => {
@@ -90,6 +94,10 @@ export default class InteractivePost extends Posts {
     })
   }
 
+  /**
+   * Renders the replies as a comment tree structure in the component.
+   * @private
+   */
   renderReplies() {
     const buildCommentTree = (comments, parentId = null) => {
       return comments
@@ -108,6 +116,11 @@ export default class InteractivePost extends Posts {
     })
   }
 
+  /**
+   * Handles the deletion of the post and hides the component if successful.
+   * @async
+   * @private
+   */
   async handleDeletePost() {
     try {
       await deletePost(this.dataset.id)
@@ -116,6 +129,12 @@ export default class InteractivePost extends Posts {
     }
   }
 
+  /**
+   * Handles adding a comment to the post.
+   * @async
+   * @private
+   * @param {FormData} formData - The form data containing the comment content.
+   */
   async handleComment(formData) {
     try {
       const response = await commentOnPost(this.dataset.id, formData)
@@ -125,6 +144,12 @@ export default class InteractivePost extends Posts {
     }
   }
 
+  /**
+   * Handles interactions such as liking or reacting with an emoji to the post.
+   * @async
+   * @private
+   * @param {string} interaction - The type of interaction ("like" or "lol").
+   */
   async handleInteraction(interaction) {
     const isInteracted = this[interaction].classList.contains("inactive")
 
